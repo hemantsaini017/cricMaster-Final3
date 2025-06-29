@@ -1,0 +1,110 @@
+*{
+    margin:0;
+    font-family: Arial; 
+     box-sizing: border-box;
+}
+.navbar {
+   display: flex;
+   height: 15vh;
+   gap: 10px;
+   padding: 10px;
+   background-color: #0d1b2a;
+ }
+  .nav-logo{
+     
+    height: 10vh;
+    width: 25vh;
+    background-image: url('cricMaster.png');
+    background-size: cover;
+    border-radius:10px;
+     
+}
+.off-screen-menu{
+   background-color: rgba(13, 27, 42, 0.8);
+height: 100vh;
+width: 100%;
+max-width: 450px;
+position: fixed;
+top: 0;
+right: -450px ;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+text-align: center;
+font-size: 3rem;
+transition: 0.3s ease;
+}
+.off-screen-menu.active{
+   right: 0;
+}
+nav{
+   padding: 1rem;
+   display: flex;
+    
+    ;
+}
+.ham-menu{
+   height: 50px;
+   width: 50px;
+   margin-left: auto;
+   position: relative;
+
+}
+.ham-menu span{
+height: 5px;
+width: 100%;
+background-color: #e0f7fa;
+border-radius: 25px;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+transition: 0.3s ease;
+}
+
+.ham-menu span:nth-child(1){
+
+   top: 25%;
+}
+.ham-menu span:nth-child(3){
+   top: 75%;
+}
+.ham-menu.active span:nth-child(1){
+   transform: translate(-50%, -50%) rotate(45deg);
+top: 50%;
+}
+.ham-menu.active span:nth-child(2){
+   opacity: 0;
+}
+.ham-menu.active span:nth-child(3){
+   transform: translate(-50%, -50%) rotate(-45deg);
+   top: 50%;
+}
+a{
+   text-decoration: none;
+}
+ul{
+   list-style: none;
+   padding-left: 0;
+}
+ 
+ .info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     background-color: #e0f7fa;
+     width: 100%;
+     height: 70vh;
+
+ }
+ 
+ 
+ .footer{
+   background-color: #1b98e0;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-evenly;
+height: 20vh;
+   align-items: center;
+ }

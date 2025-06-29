@@ -1,7 +1,9 @@
-const btn = document.getElementById("btn");
+ const btn = document.getElementById("btn");
 const scorepara = document.getElementById("score");
 
-btn.addEventListener("click", async () => {
+async function getCricketSeries() {
+  scorepara.textContent = "Fetching cricket series...";
+
   const url = 'https://cricket-live-data.p.rapidapi.com/series';
   const options = {
     method: 'GET',
@@ -11,25 +13,20 @@ btn.addEventListener("click", async () => {
     }
   };
 
-  try {
-    scorepara.textContent = "Fetching cricket series...";
-    const response = await fetch(url, options);
-    const data = await response.json();
+  const response = await fetch(url, options);
+  const data = await response.json();
+  const seriesList = data.results || [];
 
-    const seriesList = data.results || [];
-
-    if (seriesList.length === 0) {
-      scorepara.textContent = "No series found.";
-      return;
-    }
-    const topSeries = seriesList.slice(0, 3).map(s => s.series_name).join(" | ");
-    scorepara.textContent = `Top Series: ${topSeries}`;
-  } 
-  
-  catch(error) {
-    console.error(error);
-    scorepara.textContent = "Failed to fetch series.";
+  if (seriesList.length === 0) {
+    scorepara.textContent = "No series found.";
+    return;
   }
-});
+
+  const topSeries = seriesList.slice(0, 3).map(s => s.series_name).join(" | ");
+  scorepara.textContent = `Top Series: ${topSeries}`;
+}
+
+btn.addEventListener("click", getCricketSeries);
+
 
 
